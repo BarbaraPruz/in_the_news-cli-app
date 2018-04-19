@@ -4,12 +4,11 @@ module InTheNews
     def call
       welcome
 
-      stories_list = [ {title: "Story A", byline: "author1"}, {title: "Story B", byline: "author2"},
-                      {title: "Story C", byline: "author3"}, {title: "Story D", byline: "author4"}]
+      Story.create_stories_from_collection(Scraper.collect_stories)
 
       done = false
       while !done
-        show_stories (stories_list)
+        show_stories
         puts "Select Story Number (or 0 to exit)"
         user_option = gets.strip().to_i
         puts "option #{user_option}"
@@ -24,8 +23,8 @@ module InTheNews
       puts "'seeks to cut through the froth of the political spin cycle to underlying truths and values.'"
     end
 
-    def show_stories ( story_array)
-      story_array.each_with_index { | story, index | puts "#{index+1}. #{story[:title]} - #{story[:byline]}"}
+    def show_stories
+      Story.all.each_with_index { | story, index | puts "#{index+1}. #{story.title} - #{story.byline}"}
     end
 
   end
