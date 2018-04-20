@@ -1,11 +1,10 @@
 class Story
-  attr_reader :title, :byline
+  attr_reader :title, :url
 
   @@all = []
 
-  def initialize ( attribute_hash)
-    @title = attribute_hash[:title]
-    @byline = attribute_hash[:byline]
+  def initialize ( attributes_hash)
+    attributes_hash.each { |key, value| instance_variable_set("@#{key}", value) }
     @@all << self
   end
 

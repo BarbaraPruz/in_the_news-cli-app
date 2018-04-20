@@ -1,8 +1,19 @@
+require 'pry'
 class Scraper
+  URL = "https://www.csmonitor.com/"
+
   def self.collect_stories
-    [{title: "Story A", byline: "author1"},
-     {title: "Story B", byline: "author2"},
-     {title: "Story C", byline: "author3"},
-     {title: "Story D", byline: "author4"}]
+    stories = []
+
+    # ToDo Handle errors
+    doc = Nokogiri::HTML(open(URL))
+    doc.css(".story_detail").each do |item|
+      stories << {
+      :title => item.css('.story_link').text.strip,
+    #  :url => item.css('.story_headline a').attribute("href").text
+      }
+    end
+    stories.uniq
   end
+
 end
