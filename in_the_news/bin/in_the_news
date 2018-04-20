@@ -2,5 +2,5 @@
 
 # puts "Hello News"
 
-require_relative '../lib/in_the_news.rb'
+require_relative '../lib/in_the_news'
 InTheNews::CLI.new.call
