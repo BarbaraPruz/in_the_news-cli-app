@@ -1,6 +1,6 @@
 module InTheNews
   class Story
-    attr_reader :title, :url, :source
+    attr_reader :title, :source
 
     @@all = []
 
@@ -12,6 +12,10 @@ module InTheNews
 
     def summary
       source.get_summary(@url)
+    end
+
+    def url
+      source::BASE_URL + @url
     end
 
     def self.all

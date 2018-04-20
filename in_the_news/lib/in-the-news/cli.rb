@@ -16,7 +16,7 @@ module InTheNews
         user_option = gets.strip().to_i
         case user_option
         when 1..Story.all.length
-          puts Story.all[user_option-1].summary
+          story_details(Story.all[user_option-1])
         when 0
           done = true
         end
@@ -38,5 +38,11 @@ module InTheNews
       end
     end
 
+    def story_details (story)
+      puts "\nSummary:"
+      puts story.summary
+      puts "\nFor complete article, go to"
+      puts "\t#{story.url}"
+    end
   end
 end

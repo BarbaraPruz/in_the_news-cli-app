@@ -19,9 +19,8 @@ module InTheNews
     end
 
     def self.get_summary (url)
-  #    doc = Nokogiri::HTML(open(BASE_URL+url))
-#      doc.css("#summary p").text
-      return "Summary !!!"
+      doc = Nokogiri::HTML(open(BASE_URL+url))
+      doc.css(".story-head p").text.strip
     end
 
   end
