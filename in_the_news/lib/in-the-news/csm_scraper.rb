@@ -12,14 +12,14 @@ module InTheNews
       doc.css("#most-viewed-ump-block-contents .story_detail").each do |item|
         stories << {
         :title => item.css('.story_link').text.strip,
-        :url => item.css('.story_headline a').attribute("href").text
+        :url => BASE_URL+item.css('.story_headline a').attribute("href").text
         }
       end
       stories
     end
 
     def self.get_summary (url)
-      doc = Nokogiri::HTML(open(BASE_URL+url))
+      doc = Nokogiri::HTML(open(url))
       doc.css(".story-head p").text.strip
     end
 

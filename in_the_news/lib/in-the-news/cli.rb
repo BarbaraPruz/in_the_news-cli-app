@@ -6,9 +6,10 @@ module InTheNews
 
       # create/collect today's stories.
       # ToDo: Make sure nothing has gone wrong
+      puts "Collecting stories..."
       Story.create_stories_from_source(CSMScraper)
 
-      # if all ok, show/do menu
+      # until user says no more, show story titles and show detaisl for selected story
       done = false
       while !done
         show_stories

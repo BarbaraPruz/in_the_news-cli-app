@@ -1,6 +1,6 @@
 # InTheNews
 
-This CLI Gem provides access to the "In The News" stories on the Christian Science Monitory web page
+This CLI Gem provides information about the most viewed stories on the Christian Science Monitor web page
 
 ## Installation
 
@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Tor run,
+
+    $ in_the_news
+
+and then follow the screen prompts.
 
 ## Development
 

@@ -1,21 +1,14 @@
 module InTheNews
   class Story
-    attr_reader :title, :source
+    attr_reader :title, :url
+    attr_accessor :summary
 
     @@all = []
 
-    def initialize ( attributes_hash, source)
-      attributes_hash.each { |key, value| instance_variable_set("@#{key}", value) }
-      @source = source
+    def initialize ( title, url)
+      @title = title
+      @url = url
       @@all << self
-    end
-
-    def summary
-      source.get_summary(@url)
-    end
-
-    def url
-      source::BASE_URL + @url
     end
 
     def self.all
@@ -23,7 +16,10 @@ module InTheNews
     end
 
     def self.create_stories_from_source (source)
-      source.collect_stories.each { | story_hash | Story.new(story_hash, source) }
+      source.collect_stories.each do | story_hash |
+        new_story = Story.new(story_hash[:title], story_hash[:url])
+        new_story.summary = source.get_summary(new_story.url)
+      end
     end
 
   end
