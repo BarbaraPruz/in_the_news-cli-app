@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Stories in the News"
   spec.description   = "Provide access to Christian Science Monitor's In-the-News story list"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/BarbaraPruz/in_the_news-cli-app"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

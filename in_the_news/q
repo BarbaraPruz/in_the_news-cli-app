@@ -1,0 +1,29 @@
+
+[1mFrom:[0m /home/BarbaraPruz/cli-data-gem-assessment-v-000/in_the_news/lib/in-the-news/cli.rb @ line 19 InTheNews::CLI#call:
+
+     [1;34m5[0m: [32mdef[0m [1;34mcall[0m
+     [1;34m6[0m:   welcome
+     [1;34m7[0m: 
+     [1;34m8[0m:   [1;34m# create/collect today's stories.[0m
+     [1;34m9[0m:   [1;34m# ToDo: Make sure nothing has gone wrong[0m
+    [1;34m10[0m:   puts [31m[1;31m"[0m[31mCollecting stories...[1;31m"[0m[31m[0m
+    [1;34m11[0m:   [1;34;4mStory[0m.create_stories_from_source([1;34;4mCSMScraper[0m)
+    [1;34m12[0m: 
+    [1;34m13[0m:   [1;34m# until user says no more, show story titles and show detaisl for selected story[0m
+    [1;34m14[0m:   done = [1;36mfalse[0m
+    [1;34m15[0m:   [32mwhile[0m !done
+    [1;34m16[0m:     show_stories
+    [1;34m17[0m:     puts [31m[1;31m"[0m[31mSelect Story Number (or 0 to exit)[1;31m"[0m[31m[0m
+    [1;34m18[0m:     user_option = gets.strip()
+ => [1;34m19[0m:     binding.pry
+    [1;34m20[0m:     [32mcase[0m user_option
+    [1;34m21[0m:       [32mwhen[0m user_option.to_i.between?([1;34m1[0m, [1;34;4mStory[0m.all.length)
+    [1;34m22[0m:         story_details([1;34;4mStory[0m.all[user_option-[1;34m1[0m])
+    [1;34m23[0m:       [32mwhen[0m [31m[1;31m"[0m[31m0[1;31m"[0m[31m[0m
+    [1;34m24[0m:         done = [1;36mtrue[0m
+    [1;34m25[0m:     [32mend[0m
+    [1;34m26[0m:   [32mend[0m
+    [1;34m27[0m: 
+    [1;34m28[0m:   puts [31m[1;31m"[0m[31mThanks for checking the news![1;31m"[0m[31m[0m
+    [1;34m29[0m: [32mend[0m
+

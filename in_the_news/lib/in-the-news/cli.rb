@@ -14,12 +14,12 @@ module InTheNews
       while !done
         show_stories
         puts "Select Story Number (or 0 to exit)"
-        user_option = gets.strip().to_i
-        case user_option
-        when 1..Story.all.length
-          story_details(Story.all[user_option-1])
-        when 0
+        user_option = gets.strip()
+        if user_option =="0"
           done = true
+        else
+          user_option = user_option.to_i
+          story_details(Story.all[user_option-1]) if user_option.between?(1, Story.all.length)
         end
       end
 
@@ -41,9 +41,12 @@ module InTheNews
 
     def story_details (story)
       puts "\nSummary:"
-      puts story.summary
+      # Note: when using just puts on long strings  in IDE terminal, it is hard to
+      # sometimes see complete sommary (wrap/width issue?)
+      # So breaking it up into 80 character chunks.
+      story.summary.scan(/.{1,80}\W/).each { | line | puts "#{line}"}
       puts "\nFor complete article, go to"
-      puts "\t#{story.url}"
+      puts story.url
     end
   end
 end

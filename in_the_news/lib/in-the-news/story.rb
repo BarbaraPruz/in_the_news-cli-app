@@ -1,13 +1,13 @@
 module InTheNews
   class Story
-    attr_reader :title, :url
-    attr_accessor :summary
+    attr_reader :title, :url, :summary
 
     @@all = []
 
-    def initialize ( title, url)
+    def initialize ( title, url, summary)
       @title = title
       @url = url
+      @summary = summary
       @@all << self
     end
 
@@ -17,8 +17,7 @@ module InTheNews
 
     def self.create_stories_from_source (source)
       source.collect_stories.each do | story_hash |
-        new_story = Story.new(story_hash[:title], story_hash[:url])
-        new_story.summary = source.get_summary(new_story.url)
+        new_story = Story.new(story_hash[:title], story_hash[:url], story_hash[:summary])
       end
     end
 
